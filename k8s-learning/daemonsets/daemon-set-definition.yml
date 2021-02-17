@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-agent
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-agent
+  template:
+    metadata:
+      labels:
+        app: monitoring-agent
+    spec:
+      containers:
+        - name: monitoring-agent
+          image: monitoring-agent
+
+# kubectl -n kube-system get po -o wide | grep proxy
+
+# CREATING DS FROM COMMAND LINE
+# kubectl create deployment elasticsearch --image=<image> --dry-run -o yaml > elasticsearch-ds.yml
