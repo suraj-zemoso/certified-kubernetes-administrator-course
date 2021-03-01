@@ -1,0 +1,10 @@
+# Imperative way => kubectl create configmap <name> --from-literal=<key>=<value>
+# example => kubectl create configmpa app-config --from-literal=APP_COLOR=blue
+# USING file => kubectl create configmap app-config --from-file=app_config.properties
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MODE: prod

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+spec:
+  containers:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: ["sleep2.0"] # ENTRYPOINT in docker
+      args: ["10"] # CMD in DOCKER
+      envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: db-secret

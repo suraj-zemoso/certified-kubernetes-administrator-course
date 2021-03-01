@@ -1,0 +1,18 @@
+# kubectl drain node01  // This will evicts all currently running pods and make node unusable for scheduling pods
+# kubectl cordon node01 // This will not evict current pods but prevents new one's to get scheduled on node
+# kubectl uncordon node01 // This is basically reverting operation to get node back to work
+# kubectl drain node01 --ignore-daemonsets // This will solve daemonsets error
+
+# Cluster UPGRADE
+# kubectl upgrade plan
+# kubectl upgrade apply
+
+# Upgrading k8s cluster
+
+# 1. kubectl drain node01
+# 2.
+# apt-get upgrade -y kubeadm=1.12.0-00
+# apt-get upgrade -y kubelet=1.12.0-00
+# kubeadm upgrade node config --kubelet-version v1.12.0
+# systemctl restart kubelet
+# 3. kubectl uncordon node01
