@@ -16,3 +16,17 @@
 # kubeadm upgrade node config --kubelet-version v1.12.0
 # systemctl restart kubelet
 # 3. kubectl uncordon node01
+
+# BACKUP and RESTORE
+# kubectl get all --all-namespaces -o yaml > all-deploy-services.yml
+
+# BACKUP - ETCD
+# compulsory arguments --endpoints=https://127.0.0.1:2379 --cacert=/etc/etcd/ca.crt --cert=/etc/etcd/etcd-server.crt --key=/etc/etcd/etcd-server.key
+# ETCDCTL_API=3 etcdctl snapshot save snapshot.db
+# ETCDCTL_API=3 etcdctl snapshot status snapshot.db
+
+# RESTORE
+# service kube-apiserver stop
+# ETCDCTL_API=3 etcdctl snapshot restore snapshot.db --data-dir /var/lib/etcd-from-backup
+# systemctl reload-daemon
+# service etcd restart

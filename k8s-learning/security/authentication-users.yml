@@ -1,0 +1,23 @@
+# Mutiple Users who can access the k8s cluster
+# 1. Admin 2. Developers 3. Application end Users 4. Bots (For integration purpose)
+# API request for login through kube-apiserver
+# curl -v -k https://master-node-ip:6443:/api/v1/pods -u "user1:password123"
+# curl -v -k https://master-node-ip:6443:/api/v1/pods --header "Authorization: Bearer <token_value>"
+
+
+# TLS
+# Creating a Key
+# openssl genrsa -out my-bank.key 4096
+# openssl rsa -in my-bank.key - pubout > mybank.com
+# CSR
+# openssl req -new -key my-bank.key -out my-bank.csr -subj "/C=US/ST=CA/O=MyOrg,Inc./CN=my-bank"
+
+# Certificate Creation
+# 1.Generate Key >> openssl genrsa -out ca.key 4096
+# 2.Certificate signing request >> openssl req -new ca.key -subj "/CN=KUBERNETES-CA" -out ca.csr
+# 3.Sign Certificate >> openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
+
+# Admin User
+# 1. openssl genrsa -out admin.key 4096
+# 2. openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr
+# 3. openssl x509 -req -in admin.csr -CA ca.crt -CAkeyca.key -out admin.crt
