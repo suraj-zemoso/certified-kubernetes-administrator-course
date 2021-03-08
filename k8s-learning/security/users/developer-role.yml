@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["list", "get", "create", "update", "delete"]
+  - apiGroups: [""]
+    resources: ["ConfigMap"]
+    verbs: ["create"]
+    resourceNames: ["blue", "pink"]
+
+# kubectl get roles
+# kubectl get rolebindings
+# kubectl describe role developer
+
+
+# CHECKING ACCESS
+# kubectl auth can-i create deployments
+# kubectl auth can-i delete pods
+# kubectl auth can-i delete pods --as dev-user
+
+# kubectl describe rolebinding kube-proxy -n kube-system
+
+# kubectl api-resources --namespaced=true/false

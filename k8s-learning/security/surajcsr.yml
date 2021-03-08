@@ -1,0 +1,40 @@
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+  name: suraj
+spec:
+  groups:
+  - system: authenticated
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+  request: <base64-csr-data>
+
+# Viewing the CSR requests
+# kubectl get csr
+
+# Approving the CSR requests
+# kubectl certificate approve suraj
+
+# Viewing certificate
+# kubectl get csr suraj -o yaml
+  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ1ZqQ0NBVDRDQVFBd0VURVBN
+  QTBHQTFVRUF3d0dZV3R6YUdGNU1JSUJJakFOQmdrcWhraUc5dzBCQVFFRgpBQU9DQVE4QU1JSUJD
+  Z0tDQVFFQXZ6Tlc2S0grbi9QZlNDZzRIeTR1NWlsM0tjK3U0cUozSzd3Qkc1cmE3WDIzClhNRG8z
+  VmlhSFFhazVoVjlaTitBS0d1YmJtYWc5NVJjcEFIellMeFJmM3M3VnZhTEh4b29JQnRnRkVKYnVV
+  Q08KZzhSSXpjMHlDb1FSUEVxQUdKcGRtVGFMS2czRE9FSlA1SXFYd3d1WGxvOGp6aThxaGpBM09P
+  b05zVHNHM1RISgpSUys4VnkvdFZhMHFtTy80eURBdS9ncEx3Uk80ekRTVHdWWTdUMHNmckFmNmdS
+  UHlncFBJUEVWcWVpQndxcXhaCjhuQ0wrQ0hLL216bWdrc3UrdUs2TmxJT00wWERYMlZmVHN2ZkQy
+  bHhORW9yeTZUT0NyZkk1WG5Wa3FwUGZtdnUKcVZsaHZhRWluZ0hxZzl0c3JpU2lNOWMwRytkUE8x
+  Nk5vdCtPREV4TUt3SURBUUFCb0FBd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBRjQxZWR3UHR3
+  VWhST3VhbElUTmVKOHBDNUNnby8xT3p1R2JjWUZKZjJVaHRqbE9Ba3k5Cm9TN3pJRTJjU2ZaNVZG
+  TWJFTUFmU1ByV3pXZGJCODZQcGUralppTmppM2lZbTVJaHdJYzd0SVE0Ukk0STF1Yk0KTzhZa1dN
+  elhsWk55ZDdINFdKai80a0FsempqU3ZTMmpZY21LVFdadnY3N2FhaGI4dklyYnhUMG13alRvYkFn
+  NApVeEVlK3RXWXQ0VGFiMjBvQndRVFlDVmMrMWdBZk5uV1ZpeFZmQStsVmhxR2UwUzBoN0kzVlo3
+  Y0dneXBBS0x4CmRaQlJ3cDNHc1NmYzlqVUpDbWRIdWdydzdmckVEUkF4OG1RMkFVNDN4Mk9vaElT
+  NEhjMGYrak1hVml3SjJZL3UKdzJCVlpxYWM5RGVXd21yUnZzRzMrYm5PYjlzN2JkZFNRZkE9Ci0t
+  LS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+
+# kubectl config view
+# kubectl config use-context prod-user@production
