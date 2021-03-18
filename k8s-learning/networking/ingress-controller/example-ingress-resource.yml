@@ -1,0 +1,32 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-wear-watch
+  namespace: app-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /wear
+            backend:
+              serviceName: wear-service
+              servicePort: 8080
+          - path: /watch
+            backend:
+              serviceName: video-service
+              servicePort: 8080
+
+# First Create new namespace for ingress
+# kubectl create ns ingress-space
+# Create configMap Object in ingress-space
+# kubectl create configmap nginx-configuration
+# Create ServiceAccount for Ingress
+# kubectl create sa ingress-serviceaccount -n ingress-space
+# Create Role and RoleBinding
+# Now deploy Ingress controller
+# Create Ingress service - example-ingress-service.yml
+# Create ingress resource - This file/config
