@@ -5,6 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: google-storage # use this with dynamic provisioning , no need to create PV for this
   resources:
     requests:
       storage: 500Mi
